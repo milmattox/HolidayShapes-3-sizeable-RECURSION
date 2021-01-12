@@ -1,0 +1,70 @@
+import turtle
+import random
+t = turtle.Turtle()
+t.speed(50)
+def jaggedrt(size):
+  t.lt(160)
+  t.fd(size)
+  t.rt(160)
+def jaggedlt(size):
+  t.rt(160)
+  t.fd(size)
+  t.lt(160)
+t.pensize(3)
+
+def tree(size):
+  t.color('green')
+  t.begin_fill()
+  t.rt(120)
+  t.fd(size*2.4)
+  jaggedrt(size)
+  t.fd(size*2.2)
+  jaggedrt(size)
+  t.fd(size*2.4)
+  jaggedrt(size)
+  t.fd(size*2.4)
+  t.lt(120)
+  t.fd(size*4.8)
+  t.lt(120)
+  t.fd(size*2.4)
+  jaggedlt(size)
+  t.fd(size*2.4)
+  jaggedlt(size)
+  t.fd(size*2.4)
+  jaggedlt(size)
+  t.fd(size*2.2)
+  t.end_fill()
+  t.color('brown')
+  #print(t.heading())
+  t.rt(210)
+  #print(t.heading())
+  t.penup() #moving to bottom of tree
+  t.fd(size*6)
+  t.rt(90)
+  t.fd(size/2.5)
+  t.lt(90)
+  t.begin_fill()   #trunk
+  t.fd(size*1.6)
+  t.lt(90)
+  t.fd(size*.8)
+  t.lt(90)
+  t.fd(size*1.6)
+  t.lt(90)
+  t.fd(size*.8)
+  t.end_fill()
+  t.rt(180)
+
+def maketrees(size):
+  if size > 1:
+   x = random.randint(-200,200)
+   y = random.randint(-100,200)
+   print(x,y)
+   t.penup()
+   t.goto(x,y)
+   t.pendown()
+   tree(size)
+   maketrees(size-1)
+   
+
+maketrees(10)
+t.hideturtle()
